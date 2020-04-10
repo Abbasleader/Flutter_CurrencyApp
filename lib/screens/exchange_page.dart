@@ -9,9 +9,10 @@ class ExchangePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-          elevation: 5,
-          title: const Text('مبدل ارز'),
-          leading: const BackButton(color: Colors.amber)),
+        elevation: 5,
+        title: const Text('مبدل ارز'),
+        leading: const BackButton(color: Colors.amber),
+      ),
       body: Container(
         color: Colors.black87,
         child: Column(children: <Widget>[
@@ -31,7 +32,7 @@ class ExchangePage extends StatelessWidget {
                       fontSize: deviceSize * 0.08 / 1.5,
                     ),
                   ),
-                  SizedBox(width: deviceSize * 0.3),
+                  SizedBox(width: deviceSize * 0.24),
                   Icon(
                     Icons.arrow_drop_down,
                     color: Colors.amber,

@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter_offline/flutter_offline.dart';
 import 'package:jalali_date/jalali_date.dart';
+import 'package:shamsi_date/shamsi_date.dart';
 
 import '../screens/currency_page.dart';
 import '../screens/exchange_page.dart';
 import '../screens/grows_page.dart';
 
 class ImageCarousel extends StatelessWidget {
+  final List<String> daysOfWeek = ["شنبه", "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "پنج شنبه", "جمعه"];
   final carousel = Carousel(
     boxFit: BoxFit.cover,
     images: [
@@ -47,6 +49,7 @@ class ImageCarousel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     PersianDate date = new PersianDate.now();
+    Jalali j = Jalali.now();
 
     deviceSize(BuildContext context) {
       return MediaQuery.of(context).size.height;
@@ -85,7 +88,7 @@ class ImageCarousel extends StatelessWidget {
                     color: Colors.amberAccent,
                   ),
                   child: Text(
-                    date.toString(),
+                    "$date : ${daysOfWeek[j.weekDay - 1]}",
                     style: TextStyle(
                       fontSize: MediaQuery.of(context).size.width * 0.07,
                       fontWeight: FontWeight.bold,

@@ -32,7 +32,13 @@ class CurrencyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final appBar = AppBar(
       title: const Text('ارز'),
-      leading: BackButton(color: Colors.amber),
+      leading: const BackButton(color: Colors.amber),
+      actions: <Widget>[
+        const Padding(
+          padding: const EdgeInsets.only(right: 15),
+          child: Icon(Icons.search, color: Colors.amber),
+        )
+      ],
     );
     return Scaffold(
       appBar: appBar,
