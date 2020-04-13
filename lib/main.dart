@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import './screens/exchange_page.dart';
+import './screens/reorder_list_item.dart';
 import './screens/grows_page.dart';
 import './widgets/DrawerCode.dart';
 import './screens/currency_page.dart';
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Colors.black,
         accentColor: Colors.amber,
@@ -31,11 +33,11 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Currency App',
       home: HomePage(),
-      debugShowCheckedModeBanner: false,
       routes: {
         ExchangePage.routeName: (ctx) => ExchangePage(),
         GrowsPage.routeName: (ctx) => GrowsPage(),
         CurrencyPage.routeName: (ctx) => CurrencyPage(),
+        ReorderListItemScreen.routeName: (ctx) => ReorderListItemScreen(),
       },
     );
   }

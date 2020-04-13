@@ -34,8 +34,8 @@ class ImageCarousel extends StatelessWidget {
             Icon(icon, color: Colors.amberAccent, size: iconSize * 0.1),
             Text(
               text,
+              textScaleFactor: 1.8,
               style: TextStyle(
-                fontSize: iconSize / 4 * 0.15,
                 color: Colors.amberAccent,
                 fontWeight: FontWeight.bold,
               ),
@@ -89,8 +89,8 @@ class ImageCarousel extends StatelessWidget {
                   ),
                   child: Text(
                     "$date : ${daysOfWeek[j.weekDay - 1]}",
+                    textScaleFactor: 1.8,
                     style: TextStyle(
-                      fontSize: MediaQuery.of(context).size.width * 0.07,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -171,14 +171,11 @@ class ImageCarousel extends StatelessWidget {
                                       ),
                                       const SizedBox(width: 8.0),
                                       Text(
-                                        '!به اینترنت متصل نیستید',
+                                        '!به شبکه اینترنت متصل نیستید',
+                                        textScaleFactor: 1.1,
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold,
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.05,
                                         ),
                                       ),
                                     ]),

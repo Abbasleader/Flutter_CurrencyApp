@@ -1,21 +1,27 @@
 import 'package:flutter/material.dart';
 
+import '../screens/reorder_list_item.dart';
 import '../screens/exchange_page.dart';
 
 class DrawerCode extends StatelessWidget {
-  listMember(String text, IconData icons) {
-    return ListTile(
-      leading: Icon(icons, color: Colors.amber),
-      title: Text(
-        text,
-        style: const TextStyle(color: Colors.amber),
+  listMember(String text, IconData icons, BuildContext ctx, String routeName) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pop(ctx);
+        Navigator.of(ctx).pushNamed(routeName);
+      },
+      child: ListTile(
+        leading: Icon(icons, color: Colors.amber),
+        title: Text(
+          text,
+          style: const TextStyle(color: Colors.amber),
+        ),
       ),
     );
   }
 
   sizedBoxPercentage(BuildContext context) {
-    return MediaQuery.of(context).size.height -
-        MediaQuery.of(context).padding.top;
+    return MediaQuery.of(context).size.height;
   }
 
   @override
@@ -34,8 +40,7 @@ class DrawerCode extends StatelessWidget {
                 children: <Widget>[
                   const CircleAvatar(
                     radius: 35.0,
-                    backgroundImage:
-                        AssetImage('assets/images/icon.png'),
+                    backgroundImage: AssetImage('assets/images/icon.png'),
                   ),
                   SizedBox(height: sizedBoxPercentage(context) * 0.01),
                   const Text(
@@ -59,19 +64,32 @@ class DrawerCode extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                  Navigator.of(context).pushNamed(ExchangePage.routeName);
-                },
-                child: Column(children: <Widget>[
-                  listMember('ویرایش نمایش نرخ ها', Icons.settings),
-                  listMember('پشتیبانی', Icons.send),
-                  listMember('ارسال برنامه به دوستان', Icons.share),
-                  listMember('سایر محصولات', Icons.android),
-                  listMember('ارسال نظر', Icons.star),
-                ]),
-              ),
+              child: Column(children: <Widget>[
+                listMember(
+                  'ویرایش نمایش نرخ ها',
+                  Icons.settings,
+                  context,
+                  ReorderListItemScreen.routeName,
+                ),
+                listMember(
+                  'پشتیبانی',
+                  Icons.send,
+                  context,
+                  ExchangePage.routeName,
+                ),
+                listMember(
+                  'ارسال برنامه به دوستان',
+                  Icons.share,
+                  context,
+                  ExchangePage.routeName,
+                ),
+                listMember(
+                  'ارسال نظر',
+                  Icons.star,
+                  context,
+                  ExchangePage.routeName,
+                ),
+              ]),
             ),
           ),
         ],

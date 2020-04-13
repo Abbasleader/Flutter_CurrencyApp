@@ -5,7 +5,7 @@ class ExchangePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final deviceSize = MediaQuery.of(context).size.width;
+    final deviceSize = MediaQuery.of(context).size.height;
 
     return Scaffold(
       appBar: AppBar(
@@ -24,26 +24,43 @@ class ExchangePage extends StatelessWidget {
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
-//                TextField(),
-                  Text(
-                    'من هستم یک textfield',
-                    style: TextStyle(
-                      color: Colors.amber,
-                      fontSize: deviceSize * 0.08 / 1.5,
+                  Expanded(
+                    child: Container(
+                      margin: EdgeInsets.all(2),
+                      padding: EdgeInsets.only(right: 5),
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(3)),
+                        color: Colors.white,
+                      ),
+                      child: TextField(
+                        keyboardType: TextInputType.number,
+                        textAlign: TextAlign.right,
+                        style: TextStyle(fontSize: deviceSize * 0.03),
+                        decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: 'مقدار ارز خودرا وارد کنید',
+                            hintStyle: TextStyle()),
+                      ),
                     ),
                   ),
-                  SizedBox(width: deviceSize * 0.24),
-                  Icon(
-                    Icons.arrow_drop_down,
-                    color: Colors.amber,
-                    size: deviceSize * 0.08 / 1.5,
-                  ),
-                  Text(
-                    'افغانی',
-                    style: TextStyle(
-                      color: Colors.amber,
-                      fontSize: deviceSize * 0.08 / 1.5,
-                    ),
+                  GestureDetector(
+                    onTap: () {
+                      showAlertDialog(context, 'Hello ', 'Currency');
+                    },
+                    child: Row(children: <Widget>[
+                      Icon(
+                        Icons.arrow_drop_down,
+                        size: deviceSize * 0.04,
+                        color: Colors.amber,
+                      ),
+                      Text(
+                        'افغانی',
+                        textScaleFactor: 1.7,
+                        style: TextStyle(
+                          color: Colors.amber,
+                        ),
+                      ),
+                    ]),
                   ),
                 ]),
           ),
@@ -59,6 +76,18 @@ class ExchangePage extends StatelessWidget {
           ),
         ]),
       ),
+    );
+  }
+
+  showAlertDialog(BuildContext context, String title, String message) {
+    AlertDialog alertDialog = AlertDialog(
+      title: Text(title),
+      content: Text(message),
+    );
+    showDialog(
+      context: context,
+      builder: (_) => alertDialog,
+      barrierDismissible: false,
     );
   }
 }
